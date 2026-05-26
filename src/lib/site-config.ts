@@ -29,6 +29,16 @@ export const siteConfig: SiteConfig = {
       href: "/areas-of-practice/corporate-law",
       description:
         "Comprehensive legal services for businesses, from incorporation to contracts and compliance.",
+      tagline: "Business and commercial legal support.",
+      menuLinks: [
+        "Incorporation",
+        "Business Contracts",
+        "Shareholder Agreements",
+        "Partnership Agreements",
+        "Corporate Records",
+        "Buying or Selling a Business",
+        "Commercial Legal Advice",
+      ],
     },
     {
       title: "Civil Law",
@@ -36,6 +46,16 @@ export const siteConfig: SiteConfig = {
       href: "/areas-of-practice/civil-law",
       description:
         "Expert representation in civil disputes, litigation, and conflict resolution.",
+      tagline: "Support for disputes, claims, and resolution.",
+      menuLinks: [
+        "Civil Litigation",
+        "Contract Disputes",
+        "Debt Recovery",
+        "Demand Letters",
+        "Settlement Negotiations",
+        "Small Claims Matters",
+        "Court Representation",
+      ],
     },
     {
       title: "Property Law",
@@ -43,6 +63,16 @@ export const siteConfig: SiteConfig = {
       href: "/areas-of-practice/property-law",
       description:
         "Guidance on real estate transactions, property disputes, and land use matters.",
+      tagline: "Legal help for real estate and property matters.",
+      menuLinks: [
+        "Real Estate Law",
+        "Purchase & Sale Transactions",
+        "Commercial Leasing",
+        "Residential Leasing",
+        "Mortgage & Refinancing",
+        "Title Transfers",
+        "Property Disputes",
+      ],
     },
     {
       title: "Immigration Law",
@@ -50,6 +80,16 @@ export const siteConfig: SiteConfig = {
       href: "/areas-of-practice/immigration-law",
       description:
         "Professional assistance with visas, work permits, permanent residence, and citizenship applications.",
+      tagline: "Guidance for Canadian immigration applications.",
+      menuLinks: [
+        "Permanent Residence",
+        "Express Entry",
+        "Work Permits",
+        "Study Permits",
+        "Visitor Visas",
+        "Family Sponsorship",
+        "Citizenship Applications",
+      ],
     },
   ],
 };

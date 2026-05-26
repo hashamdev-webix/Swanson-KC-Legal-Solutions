@@ -8,6 +8,8 @@ export interface PracticeArea {
   slug: string;
   href: string;
   description: string;
+  tagline: string;
+  menuLinks: string[];
 }
 
 export interface ContactInfo {
