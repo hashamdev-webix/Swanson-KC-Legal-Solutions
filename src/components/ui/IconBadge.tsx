@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface IconBadgeProps {
   icon: LucideIcon;
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   variant?: "gold" | "navy" | "navy-solid";
   className?: string;
 }
@@ -11,11 +11,13 @@ interface IconBadgeProps {
 const sizeStyles = {
   sm: "w-10 h-10",
   md: "w-12 h-12",
+  lg: "w-16 h-16",
 };
 
 const iconSizeStyles = {
   sm: "w-5 h-5",
   md: "w-6 h-6",
+  lg: "w-8 h-8",
 };
 
 const variantStyles = {

@@ -1,322 +1,592 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import {
-  Container,
-  Section,
-  SectionHeading,
-  Card,
-  FeatureCard,
-  StepCard,
-  Breadcrumbs,
-  FAQAccordion,
-} from "@/components/ui";
+  Briefcase,
+  Scale,
+  Home,
+  Globe,
+  CheckCircle,
+  MessageSquare,
+  Target,
+  Clock,
+  Layers,
+  Users,
+  ShieldCheck,
+  Phone,
+  Mail,
+  MapPin,
+  ArrowRight,
+} from "lucide-react";
+import { HeroSlideshow } from "@/components/sections/HeroSlideshow";
 import { CTASection } from "@/components/sections/CTASection";
-import { Scale, Building2, Home, Globe, Shield, Users } from "lucide-react";
+import { Section } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { FeatureCard } from "@/components/ui/FeatureCard";
+import { StepCard } from "@/components/ui/StepCard";
+import { Card } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
+import { IconBadge } from "@/components/ui/IconBadge";
+import { siteConfig } from "@/lib/site-config";
+import { ContactForm } from "@/components/sections/ContactForm";
 
-export default function ComponentShowcase() {
-  const faqItems = [
-    {
-      question: "What areas of law does your firm practice?",
-      answer:
-        "We specialize in corporate law, civil law, property law, and immigration law, providing comprehensive legal services to individuals, families, and businesses across Canada.",
-    },
-    {
-      question: "How do I schedule a consultation?",
-      answer:
-        "You can schedule a consultation by calling our office, sending us an email, or using the contact form on our website. We typically respond within 24 hours.",
-    },
-    {
-      question: "What should I bring to my first consultation?",
-      answer:
-        "Please bring any relevant documents related to your legal matter, a list of questions you'd like to discuss, and a form of identification. We'll guide you through what else might be needed during our initial conversation.",
-    },
-  ];
+export const metadata: Metadata = {
+  title:
+    "Trusted Canadian Legal Services for Individuals, Families & Businesses | Swanson KC Legal Solutions",
+  description:
+    "Swanson KC Legal Solutions is a Canadian law firm providing legal services in corporate law, civil law, property law, and immigration law. We assist individuals, families, businesses, property owners, and newcomers.",
+  keywords: [
+    "Canadian law firm",
+    "corporate law",
+    "civil law",
+    "property law",
+    "immigration law",
+    "legal services Canada",
+    "business lawyer",
+    "real estate lawyer",
+    "immigration lawyer",
+  ],
+  openGraph: {
+    title:
+      "Trusted Canadian Legal Services for Individuals, Families & Businesses | Swanson KC Legal Solutions",
+    description:
+      "Swanson KC Legal Solutions is a Canadian law firm providing legal services in corporate law, civil law, property law, and immigration law. We assist individuals, families, businesses, property owners, and newcomers.",
+    type: "website",
+  },
+};
 
-  const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    { label: "Areas of Practice", href: "/areas-of-practice" },
-    { label: "Corporate Law" },
-  ];
-
+export default function HomePage() {
   return (
-    <>
-      {/* Hero Section with SectionHeading */}
-      <Section background="cream">
-        <Container>
-          <div className="space-y-12">
-            <SectionHeading
-              eyebrow="Component Showcase"
-              title="UI Component Library"
-              description="A comprehensive set of reusable components for the Swanson KC Legal Solutions website. This page demonstrates all available UI elements."
-              align="center"
-            />
+    <main>
+      {/* Hero Slideshow */}
+      <HeroSlideshow />
 
-            {/* Breadcrumbs Example */}
-            <div>
-              <h3 className="text-xl font-heading font-semibold text-navy-800 mb-4">
-                Breadcrumbs
-              </h3>
-              <Breadcrumbs items={breadcrumbItems} />
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Card Variants */}
+      {/* Section 2 - What We Do */}
       <Section background="white">
         <Container>
           <SectionHeading
-            title="Card Variants"
-            description="Different card styles for various use cases"
-            className="mb-8"
+            eyebrow="WHAT WE DO"
+            title="Clear, practical legal guidance across key areas of Canadian law."
+            description="We provide reliable legal services for clients who need clear advice, strong documentation, and practical solutions. Our firm assists with business matters, civil disputes, property transactions, and immigration applications across Canada."
+            align="center"
+            className="mb-12"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card variant="default">
-              <h3 className="font-heading text-lg font-semibold text-navy-800 mb-2">
-                Default Card
-              </h3>
-              <p className="text-navy-600 text-sm">
-                White background with subtle border and soft shadow.
-              </p>
-            </Card>
-            <Card variant="bordered">
-              <h3 className="font-heading text-lg font-semibold text-navy-800 mb-2">
-                Bordered Card
-              </h3>
-              <p className="text-navy-600 text-sm">
-                White background with stronger navy border, no shadow.
-              </p>
-            </Card>
-            <Card variant="elevated">
-              <h3 className="font-heading text-lg font-semibold text-navy-800 mb-2">
-                Elevated Card
-              </h3>
-              <p className="text-navy-600 text-sm">
-                White background with larger soft shadow, no border.
-              </p>
-            </Card>
-            <Card variant="navy">
-              <h3 className="font-heading text-lg font-semibold text-white mb-2">
-                Navy Card
-              </h3>
-              <p className="text-navy-100 text-sm">
-                Navy background with light text for dark sections.
-              </p>
-            </Card>
-          </div>
-
-          <div className="mt-8">
-            <h4 className="font-heading text-lg font-semibold text-navy-800 mb-4">
-              Hover Effects
-            </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card variant="default" hover>
-                <h3 className="font-heading text-lg font-semibold text-navy-800 mb-2">
-                  Hover Default
-                </h3>
-                <p className="text-navy-600 text-sm">
-                  Hover to see lift effect
-                </p>
-              </Card>
-              <Card variant="bordered" hover>
-                <h3 className="font-heading text-lg font-semibold text-navy-800 mb-2">
-                  Hover Bordered
-                </h3>
-                <p className="text-navy-600 text-sm">
-                  Hover to see lift effect
-                </p>
-              </Card>
-              <Card variant="elevated" hover>
-                <h3 className="font-heading text-lg font-semibold text-navy-800 mb-2">
-                  Hover Elevated
-                </h3>
-                <p className="text-navy-600 text-sm">
-                  Hover to see lift effect
-                </p>
-              </Card>
-              <Card variant="navy" hover>
-                <h3 className="font-heading text-lg font-semibold text-white mb-2">
-                  Hover Navy
-                </h3>
-                <p className="text-navy-100 text-sm">
-                  Hover to see glow effect
-                </p>
-              </Card>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Feature Cards */}
-      <Section background="navy-soft">
-        <Container>
-          <SectionHeading
-            title="Feature Cards"
-            description="Composed cards with icons for benefits and services"
-            className="mb-8"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <FeatureCard
-              icon={Scale}
+              icon={Briefcase}
               title="Corporate Law"
-              description="Comprehensive legal services for businesses, from incorporation to contracts and compliance."
-              href="/areas-of-practice/corporate-law"
+              description="We support companies, entrepreneurs, and business owners with incorporation, contracts, shareholder matters, corporate records, and transactions."
+              href={siteConfig.practiceAreas[0].href}
             />
             <FeatureCard
-              icon={Building2}
+              icon={Scale}
               title="Civil Law"
-              description="Expert representation in civil disputes, litigation, and conflict resolution."
-              href="/areas-of-practice/civil-law"
-              iconVariant="navy"
+              description="We assist with civil disputes, contract issues, debt recovery, demand letters, settlement negotiations, and court-related matters."
+              href={siteConfig.practiceAreas[1].href}
             />
             <FeatureCard
               icon={Home}
               title="Property Law"
-              description="Guidance on real estate transactions, property disputes, and land use matters."
-              href="/areas-of-practice/property-law"
-              iconVariant="navy-solid"
+              description="We help clients with real estate purchases, sales, refinancing, title transfers, leases, property disputes, and landlord-tenant matters."
+              href={siteConfig.practiceAreas[2].href}
             />
-          </div>
-        </Container>
-      </Section>
-
-      {/* Feature Cards on Navy Background */}
-      <Section background="navy">
-        <Container>
-          <SectionHeading
-            title="Feature Cards on Dark Background"
-            description="Navy variant cards for dark sections"
-            light
-            className="mb-8"
-          />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <FeatureCard
               icon={Globe}
               title="Immigration Law"
-              description="Professional assistance with visas, work permits, permanent residence, and citizenship."
-              href="/areas-of-practice/immigration-law"
-              cardVariant="navy"
-              iconVariant="gold"
-            />
-            <FeatureCard
-              icon={Shield}
-              title="Experienced Team"
-              description="Our lawyers bring decades of combined experience in Canadian law."
-              cardVariant="navy"
-              iconVariant="gold"
-            />
-            <FeatureCard
-              icon={Users}
-              title="Client-Focused"
-              description="We prioritize clear communication and personalized legal strategies."
-              cardVariant="navy"
-              iconVariant="gold"
+              description="We guide individuals, families, workers, students, and newcomers through immigration applications, permits, sponsorships, and related matters."
+              href={siteConfig.practiceAreas[3].href}
             />
           </div>
         </Container>
       </Section>
 
-      {/* Step Cards */}
+      {/* Section 3 - Who We Are */}
+      <Section background="cream">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Text */}
+            <div className="space-y-6">
+              <SectionHeading
+                eyebrow="WHO WE ARE"
+                title="A Canadian Law Firm Built on Trust and Practical Guidance"
+              />
+              <div className="space-y-4 text-navy-600 leading-relaxed">
+                <p>
+                  Swanson KC Legal Solutions is a Canadian law firm committed to
+                  delivering professional, practical, and client-focused legal
+                  services. We work with individuals, families, business owners,
+                  property clients, and newcomers who need clear legal guidance
+                  and dependable representation.
+                </p>
+                <p>
+                  Our approach is built on communication, preparation, and
+                  trust. We take the time to understand each client&apos;s
+                  matter, explain the legal options available, and provide a
+                  path forward that is practical, efficient, and tailored to the
+                  client&apos;s goals.
+                </p>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  "Client-focused legal advice",
+                  "Clear communication at every stage",
+                  "Practical solutions for complex matters",
+                  "Support for individuals and businesses",
+                  "Professional representation",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-gold-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-navy-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="pt-4">
+                <Button href="/about-us" variant="primary">
+                  Learn More About Our Firm
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
+              <Image
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"
+                alt="Professional law office consultation"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Section 4 - Areas of Practice */}
       <Section background="white">
         <Container>
           <SectionHeading
-            title="Process Steps"
-            description="Numbered step cards for process explanations"
-            className="mb-8"
+            eyebrow="AREAS OF PRACTICE"
+            title="Our Main Areas of Practice"
+            description="Our firm provides legal services in key areas that affect businesses, families, property owners, and individuals navigating legal or immigration matters in Canada."
+            align="center"
+            className="mb-12"
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Corporate Law */}
+            <Card variant="bordered" className="space-y-6">
+              <IconBadge icon={Briefcase} variant="gold" size="lg" />
+              <h3 className="font-heading text-2xl font-semibold text-navy-800">
+                Corporate Law
+              </h3>
+              <p className="text-navy-600 leading-relaxed">
+                Our corporate law services help businesses establish, manage,
+                and grow with the right legal structure and documentation.
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "Incorporation",
+                  "Business Contracts",
+                  "Shareholder Agreements",
+                  "Partnership Agreements",
+                  "Corporate Records",
+                  "Buying or Selling a Business",
+                ].map((service) => (
+                  <li
+                    key={service}
+                    className="flex items-center gap-2 text-navy-700"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold-600" />
+                    {service}
+                  </li>
+                ))}
+              </ul>
+              <Button
+                href={siteConfig.practiceAreas[0].href}
+                variant="outline"
+                className="w-full sm:w-auto"
+              >
+                View Corporate Law <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Card>
+
+            {/* Civil Law */}
+            <Card variant="bordered" className="space-y-6">
+              <IconBadge icon={Scale} variant="gold" size="lg" />
+              <h3 className="font-heading text-2xl font-semibold text-navy-800">
+                Civil Law
+              </h3>
+              <p className="text-navy-600 leading-relaxed">
+                We provide legal guidance for individuals and businesses
+                involved in disputes, focused on resolving matters efficiently
+                through advice, negotiation, settlement, or court
+                representation.
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "Civil Litigation",
+                  "Contract Disputes",
+                  "Debt Recovery",
+                  "Demand Letters",
+                  "Settlement Negotiations",
+                  "Small Claims Matters",
+                ].map((service) => (
+                  <li
+                    key={service}
+                    className="flex items-center gap-2 text-navy-700"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold-600" />
+                    {service}
+                  </li>
+                ))}
+              </ul>
+              <Button
+                href={siteConfig.practiceAreas[1].href}
+                variant="outline"
+                className="w-full sm:w-auto"
+              >
+                View Civil Law <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Card>
+
+            {/* Property Law */}
+            <Card variant="bordered" className="space-y-6">
+              <IconBadge icon={Home} variant="gold" size="lg" />
+              <h3 className="font-heading text-2xl font-semibold text-navy-800">
+                Property Law
+              </h3>
+              <p className="text-navy-600 leading-relaxed">
+                We help clients with residential and commercial property
+                matters, including transactions, leases, refinancing, title
+                transfers, and property-related concerns.
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "Purchase & Sale Transactions",
+                  "Real Estate Closings",
+                  "Commercial Leasing",
+                  "Residential Leasing",
+                  "Mortgage & Refinancing",
+                  "Title Transfers",
+                ].map((service) => (
+                  <li
+                    key={service}
+                    className="flex items-center gap-2 text-navy-700"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold-600" />
+                    {service}
+                  </li>
+                ))}
+              </ul>
+              <Button
+                href={siteConfig.practiceAreas[2].href}
+                variant="outline"
+                className="w-full sm:w-auto"
+              >
+                View Property Law <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Card>
+
+            {/* Immigration Law */}
+            <Card variant="bordered" className="space-y-6">
+              <IconBadge icon={Globe} variant="gold" size="lg" />
+              <h3 className="font-heading text-2xl font-semibold text-navy-800">
+                Immigration Law
+              </h3>
+              <p className="text-navy-600 leading-relaxed">
+                We assist clients with Canadian immigration matters by helping
+                them understand eligibility, prepare documentation, and navigate
+                application processes.
+              </p>
+              <ul className="space-y-2">
+                {[
+                  "Permanent Residence",
+                  "Express Entry",
+                  "Work Permits",
+                  "Study Permits",
+                  "Visitor Visas",
+                  "Family Sponsorship",
+                ].map((service) => (
+                  <li
+                    key={service}
+                    className="flex items-center gap-2 text-navy-700"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold-600" />
+                    {service}
+                  </li>
+                ))}
+              </ul>
+              <Button
+                href={siteConfig.practiceAreas[3].href}
+                variant="outline"
+                className="w-full sm:w-auto"
+              >
+                View Immigration Law <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Card>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Section 5 - How Our Process Works */}
+      <Section background="navy-soft">
+        <Container>
+          <SectionHeading
+            eyebrow="OUR PROCESS"
+            title="How Our Process Works"
+            description="We make the legal process clear from the beginning, so you understand what to expect and how your matter will move forward."
+            align="center"
+            className="mb-12"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <StepCard
               step="01"
               title="Initial Consultation"
-              description="We begin with a thorough consultation to understand your legal needs and objectives."
+              description="We begin by learning about your legal matter, goals, concerns, and timelines."
             />
             <StepCard
               step="02"
-              title="Strategy Development"
-              description="Our team develops a tailored legal strategy designed to achieve your goals."
+              title="Document & Matter Review"
+              description="Our team reviews the relevant documents, facts, legal requirements, and available options."
             />
             <StepCard
               step="03"
-              title="Implementation"
-              description="We execute the strategy with precision, keeping you informed every step of the way."
+              title="Legal Strategy"
+              description="We explain your options and recommend a practical legal approach based on your matter."
+            />
+            <StepCard
+              step="04"
+              title="Resolution & Next Steps"
+              description="We assist with applications, agreements, negotiations, filings, closings, or representation as required."
             />
           </div>
         </Container>
       </Section>
 
-      {/* FAQ Accordion */}
-      <Section background="cream">
+      {/* Section 6 - Why Choose Us */}
+      <Section background="white">
         <Container>
-          <div className="max-w-3xl mx-auto">
-            <SectionHeading
-              title="Frequently Asked Questions"
-              description="Common questions about our legal services"
-              align="center"
-              className="mb-8"
+          <SectionHeading
+            eyebrow="WHY CHOOSE US"
+            title="Why Choose Swanson KC Legal Solutions"
+            description="Choosing the right law firm can make a meaningful difference in how your legal matter is handled. We focus on clear communication, practical solutions, and professional service."
+            align="center"
+            className="mb-12"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <FeatureCard
+              icon={MessageSquare}
+              title="Clear Legal Advice"
+              description="We explain legal options in plain language so clients understand their position before making decisions."
             />
-            <FAQAccordion items={faqItems} />
+            <FeatureCard
+              icon={Target}
+              title="Practical Strategy"
+              description="Our approach is focused on realistic solutions that match the client's needs, timeline, and objectives."
+            />
+            <FeatureCard
+              icon={Clock}
+              title="Responsive Communication"
+              description="We keep clients informed and provide timely updates throughout the legal process."
+            />
+            <FeatureCard
+              icon={Layers}
+              title="Multiple Practice Areas"
+              description="Our firm supports clients across corporate, civil, property, and immigration matters."
+            />
+            <FeatureCard
+              icon={Users}
+              title="Client-Focused Service"
+              description="Every matter is handled with attention, care, and respect for the client's goals."
+            />
+            <FeatureCard
+              icon={ShieldCheck}
+              title="Professional Legal Support"
+              description="We provide dependable legal assistance for individuals, families, businesses, property clients, and newcomers."
+            />
           </div>
         </Container>
       </Section>
 
-      {/* CTA Section - Navy Background */}
+      {/* Section 7 - Mid-Page CTA Banner */}
       <CTASection
-        title="Ready to Get Started?"
-        description="Schedule a consultation with our experienced legal team today."
-        primaryCta={{
-          label: "Book a Consultation",
-          href: "/contact-us",
-        }}
-        secondaryCta={{
-          label: "Learn More",
-          href: "/about-us",
-        }}
+        title="Need Legal Guidance? Speak With Our Team Today."
+        description="Whether you are starting a business, dealing with a dispute, buying property, or navigating an immigration matter, our team is ready to help you understand your options."
+        primaryCta={{ label: "Book a Consultation", href: "/contact-us" }}
+        secondaryCta={{ label: "Contact the Firm", href: "/contact-us" }}
         background="navy"
       />
 
-      {/* CTA Section - Gold Soft Background */}
-      <CTASection
-        title="Have Questions About Your Legal Matter?"
-        description="Our team is here to help. Reach out for a free initial consultation."
-        primaryCta={{
-          label: "Contact Us",
-          href: "/contact-us",
-        }}
-        secondaryCta={{
-          label: "View Our Services",
-          href: "/areas-of-practice",
-        }}
-        background="gold-soft"
-      />
-
-      {/* Section Heading Variants */}
-      <Section background="white">
+      {/* Section 8 - Legal Insights & Updates */}
+      <Section background="cream">
         <Container>
-          <div className="space-y-12">
-            <SectionHeading
-              eyebrow="Left Aligned"
-              title="Section Heading with Eyebrow"
-              description="This is a left-aligned section heading with an eyebrow label, title, and description."
-            />
-            <SectionHeading
-              title="Section Heading Without Eyebrow"
-              description="This heading has no eyebrow label, just a title and description."
-              align="center"
-            />
+          <SectionHeading
+            eyebrow="INSIGHTS"
+            title="Legal Insights & Updates"
+            description="Read practical legal updates, guides, and articles from our team."
+            align="center"
+            className="mb-12"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Article 1 */}
+            <Card variant="elevated" hover as="article">
+              <div className="space-y-4">
+                <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-gold-100 text-gold-800 rounded-full">
+                  Corporate Law
+                </span>
+                <h3 className="font-heading text-xl font-semibold text-navy-800">
+                  What to Know Before Incorporating a Business in Canada
+                </h3>
+                <p className="text-navy-600 leading-relaxed">
+                  A short guide for entrepreneurs and business owners
+                  considering incorporation, legal structure, and corporate
+                  documentation.
+                </p>
+                <a
+                  href="/insights"
+                  className="inline-flex items-center gap-2 text-gold-600 font-medium hover:text-gold-700 transition-colors"
+                >
+                  Read More <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </Card>
+
+            {/* Article 2 */}
+            <Card variant="elevated" hover as="article">
+              <div className="space-y-4">
+                <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-gold-100 text-gold-800 rounded-full">
+                  Property Law
+                </span>
+                <h3 className="font-heading text-xl font-semibold text-navy-800">
+                  Common Issues in Property Transactions
+                </h3>
+                <p className="text-navy-600 leading-relaxed">
+                  Learn about legal considerations that can arise when buying,
+                  selling, leasing, or refinancing property.
+                </p>
+                <a
+                  href="/insights"
+                  className="inline-flex items-center gap-2 text-gold-600 font-medium hover:text-gold-700 transition-colors"
+                >
+                  Read More <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </Card>
+
+            {/* Article 3 */}
+            <Card variant="elevated" hover as="article">
+              <div className="space-y-4">
+                <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-gold-100 text-gold-800 rounded-full">
+                  Immigration Law
+                </span>
+                <h3 className="font-heading text-xl font-semibold text-navy-800">
+                  Understanding Canadian Immigration Application Requirements
+                </h3>
+                <p className="text-navy-600 leading-relaxed">
+                  An overview of key documents, eligibility considerations, and
+                  common challenges in Canadian immigration matters.
+                </p>
+                <a
+                  href="/insights"
+                  className="inline-flex items-center gap-2 text-gold-600 font-medium hover:text-gold-700 transition-colors"
+                >
+                  Read More <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </Card>
+          </div>
+          <div className="text-center mt-10">
+            <Button href="/insights" variant="primary">
+              View All Insights
+            </Button>
           </div>
         </Container>
       </Section>
 
-      {/* Light Section Heading on Dark Background */}
+      {/* Section 9 - Contact Preview */}
       <Section background="navy">
         <Container>
-          <SectionHeading
-            eyebrow="Dark Background"
-            title="Light Section Heading"
-            description="This section heading uses light colors for visibility on dark backgrounds."
-            light
-            align="center"
-          />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Left Column - Contact Info */}
+            <div className="space-y-8">
+              <SectionHeading
+                eyebrow="GET IN TOUCH"
+                title="Contact Swanson KC Legal Solutions"
+                description="Have a legal question or need assistance with a corporate, civil, property, or immigration matter? Contact our office to schedule a confidential consultation."
+                light
+              />
+
+              {/* Contact Details */}
+              <div className="space-y-6">
+                <a
+                  href={`tel:${siteConfig.contact.phone}`}
+                  className="flex items-start gap-4 text-white hover:text-gold-400 transition-colors group"
+                >
+                  <Phone className="w-5 h-5 text-gold-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="font-semibold">Phone</div>
+                    <div className="text-navy-100 group-hover:text-gold-400">
+                      {siteConfig.contact.phone}
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href={`mailto:${siteConfig.contact.email}`}
+                  className="flex items-start gap-4 text-white hover:text-gold-400 transition-colors group"
+                >
+                  <Mail className="w-5 h-5 text-gold-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="font-semibold">Email</div>
+                    <div className="text-navy-100 group-hover:text-gold-400">
+                      {siteConfig.contact.email}
+                    </div>
+                  </div>
+                </a>
+
+                <div className="flex items-start gap-4 text-white">
+                  <MapPin className="w-5 h-5 text-gold-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="font-semibold">Office</div>
+                    <div className="text-navy-100">
+                      {siteConfig.contact.address}
+                      <br />
+                      {siteConfig.contact.city}, {siteConfig.contact.province}
+                      <br />
+                      {siteConfig.contact.country}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 text-white">
+                  <Clock className="w-5 h-5 text-gold-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="font-semibold">Hours</div>
+                    <div className="text-navy-100">
+                      {siteConfig.contact.hours}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button
+                  href={`tel:${siteConfig.contact.phone}`}
+                  variant="primary"
+                >
+                  Call Now
+                </Button>
+                <Button href="/contact-us" variant="outline-light">
+                  Get Directions
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column - Contact Form */}
+            <ContactForm />
+          </div>
         </Container>
       </Section>
-    </>
+    </main>
   );
 }
