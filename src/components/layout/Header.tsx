@@ -116,7 +116,8 @@ export function Header() {
                 onMouseLeave={handleMegaMenuLeave}
                 onKeyDown={handleMegaMenuKeyDown}
               >
-                <button
+                <Link
+                  href="/areas-of-practice"
                   className={cn(
                     "flex items-center gap-1 text-navy-700 hover:text-gold-600 transition-colors font-medium relative group",
                     isActiveLink("/areas-of-practice") && "text-gold-600",
@@ -138,7 +139,7 @@ export function Header() {
                       isActiveLink("/areas-of-practice") && "w-full",
                     )}
                   />
-                </button>
+                </Link>
               </div>
 
               {/* Other Nav Links */}
@@ -281,25 +282,37 @@ export function Header() {
 
               {/* Areas of Practice Accordion */}
               <div>
-                <button
-                  onClick={() =>
-                    setIsPracticeAreasExpanded(!isPracticeAreasExpanded)
-                  }
-                  className={cn(
-                    "w-full flex items-center justify-between px-4 py-3 text-navy-700 hover:bg-navy-50 hover:text-gold-600 rounded-md transition-colors font-medium",
-                    isActiveLink("/areas-of-practice") &&
-                      "bg-navy-50 text-gold-600",
-                  )}
-                  aria-expanded={isPracticeAreasExpanded}
-                >
-                  Areas of Practice
-                  <ChevronDown
+                <div className="flex items-center">
+                  <Link
+                    href="/areas-of-practice"
                     className={cn(
-                      "w-5 h-5 transition-transform",
-                      isPracticeAreasExpanded && "rotate-180",
+                      "flex-1 px-4 py-3 text-navy-700 hover:bg-navy-50 hover:text-gold-600 rounded-l-md transition-colors font-medium",
+                      isActiveLink("/areas-of-practice") &&
+                        "bg-navy-50 text-gold-600",
                     )}
-                  />
-                </button>
+                  >
+                    Areas of Practice
+                  </Link>
+                  <button
+                    onClick={() =>
+                      setIsPracticeAreasExpanded(!isPracticeAreasExpanded)
+                    }
+                    className={cn(
+                      "px-4 py-3 text-navy-700 hover:bg-navy-50 hover:text-gold-600 rounded-r-md transition-colors",
+                      isActiveLink("/areas-of-practice") &&
+                        "bg-navy-50 text-gold-600",
+                    )}
+                    aria-expanded={isPracticeAreasExpanded}
+                    aria-label="Toggle Areas of Practice submenu"
+                  >
+                    <ChevronDown
+                      className={cn(
+                        "w-5 h-5 transition-transform",
+                        isPracticeAreasExpanded && "rotate-180",
+                      )}
+                    />
+                  </button>
+                </div>
                 {isPracticeAreasExpanded && (
                   <div className="mt-2 ml-4 space-y-1 border-l-2 border-gold-500 pl-4">
                     {siteConfig.practiceAreas.map((area) => (
