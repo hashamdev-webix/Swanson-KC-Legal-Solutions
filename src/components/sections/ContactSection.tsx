@@ -7,12 +7,12 @@ import { siteConfig } from "@/lib/site-config";
 import { ContactForm } from "./ContactForm";
 
 interface ContactSectionProps {
-  title?: string;
+  heading?: string;
   description?: string;
 }
 
 export function ContactSection({
-  title = "Contact Swanson KC Legal Solutions",
+  heading = "Contact Swanson KC Legal Solutions",
   description = "Have a legal question or need assistance with a corporate, civil, property, or immigration matter? Contact our office to schedule a confidential consultation.",
 }: ContactSectionProps) {
   return (
@@ -23,7 +23,7 @@ export function ContactSection({
           <div className="space-y-8">
             <SectionHeading
               eyebrow="GET IN TOUCH"
-              title={title}
+              title={heading}
               description={description}
               light
             />

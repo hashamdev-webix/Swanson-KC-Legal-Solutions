@@ -557,7 +557,7 @@ export default function AreasOfPracticePage() {
 
       {/* Section 9 - Final Contact */}
       <ContactSection
-        title="Contact Swanson KC Legal Solutions"
+        heading="Contact Swanson KC Legal Solutions"
         description="Have a legal question or need help choosing the right practice area? Contact our office to schedule a confidential consultation."
       />
     </main>
