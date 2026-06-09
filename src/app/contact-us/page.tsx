@@ -22,7 +22,12 @@ import {
   Layers,
   Target,
 } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
+import {
+  getContactAddressLines,
+  getGoogleMapsEmbedUrl,
+  getGoogleMapsUrl,
+  siteConfig,
+} from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact Us | Book a Consultation",
@@ -46,11 +51,8 @@ export const metadata: Metadata = {
 };
 
 export default function ContactUsPage() {
-  // Encode address for Google Maps search
-  const encodedAddress = encodeURIComponent(
-    `${siteConfig.contact.address}, ${siteConfig.contact.city}, ${siteConfig.contact.province}, ${siteConfig.contact.country}`,
-  );
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+  const mapsUrl = getGoogleMapsUrl();
+  const addressLines = getContactAddressLines();
 
   return (
     <>
@@ -157,13 +159,11 @@ export default function ContactUsPage() {
               <h3 className="font-heading text-xl font-semibold text-navy-800">
                 Visit Us
               </h3>
-              <p className="text-navy-700 font-medium">
-                {siteConfig.contact.address}
-                <br />
-                {siteConfig.contact.city}, {siteConfig.contact.province}
-                <br />
-                {siteConfig.contact.country}
-              </p>
+              <div className="text-navy-700 font-medium space-y-0.5">
+                {addressLines.map((line) => (
+                  <div key={line}>{line}</div>
+                ))}
+              </div>
               <p className="text-sm text-navy-600">
                 Meet with us at our office.
               </p>
@@ -336,24 +336,17 @@ export default function ContactUsPage() {
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* MAP PLACEHOLDER */}
             <div className="order-2 lg:order-1">
-              {/* NOTE: This is a placeholder - a real Google Maps embed/iframe will replace this once the real office address is provided */}
-              <div className="h-[400px] rounded-lg bg-navy-50 border-2 border-navy-200 flex flex-col items-center justify-center p-8 text-center space-y-4">
-                <MapPin className="w-16 h-16 text-navy-400" />
-                <div className="space-y-2">
-                  <p className="text-lg font-medium text-navy-700">
-                    Map location coming soon
-                  </p>
-                  <p className="text-sm text-navy-600">
-                    {siteConfig.contact.address}
-                    <br />
-                    {siteConfig.contact.city}, {siteConfig.contact.province}
-                    <br />
-                    {siteConfig.contact.country}
-                  </p>
-                </div>
-              </div>
+              <iframe
+                src={getGoogleMapsEmbedUrl()}
+                width="100%"
+                height="400"
+                className="h-[400px] w-full rounded-lg border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                title="Swanson KC Legal Solutions office location on Google Maps"
+              />
             </div>
 
             {/* OFFICE DETAILS */}
@@ -367,13 +360,11 @@ export default function ContactUsPage() {
                     <MapPin className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-medium text-navy-700">Address</p>
-                      <p>
-                        {siteConfig.contact.address}
-                        <br />
-                        {siteConfig.contact.city}, {siteConfig.contact.province}
-                        <br />
-                        {siteConfig.contact.country}
-                      </p>
+                      <div className="space-y-0.5">
+                        {addressLines.map((line) => (
+                          <div key={line}>{line}</div>
+                        ))}
+                      </div>
                     </div>
                   </div>
 

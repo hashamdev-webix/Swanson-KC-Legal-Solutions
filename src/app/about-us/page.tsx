@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     "civil law firm",
     "property law firm",
     "immigration law firm",
-    "Toronto lawyers",
+    "Canadian lawyers",
   ],
   openGraph: {
     title: "About Us | A Canadian Law Firm",

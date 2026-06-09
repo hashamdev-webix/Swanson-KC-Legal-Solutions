@@ -3,7 +3,11 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
+import {
+  getContactAddressLines,
+  getGoogleMapsUrl,
+  siteConfig,
+} from "@/lib/site-config";
 import { ContactForm } from "./ContactForm";
 
 interface ContactSectionProps {
@@ -61,11 +65,9 @@ export function ContactSection({
                 <div>
                   <div className="font-semibold">Office</div>
                   <div className="text-navy-100">
-                    {siteConfig.contact.address}
-                    <br />
-                    {siteConfig.contact.city}, {siteConfig.contact.province}
-                    <br />
-                    {siteConfig.contact.country}
+                    {getContactAddressLines().map((line) => (
+                      <div key={line}>{line}</div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -89,7 +91,12 @@ export function ContactSection({
               >
                 Call Now
               </Button>
-              <Button href="/contact-us" variant="outline-light">
+              <Button
+                href={getGoogleMapsUrl()}
+                variant="outline-light"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Get Directions
               </Button>
             </div>

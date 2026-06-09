@@ -18,6 +18,7 @@ export interface ContactInfo {
   address: string;
   city: string;
   province: string;
+  postalCode: string;
   country: string;
   hours: string;
 }

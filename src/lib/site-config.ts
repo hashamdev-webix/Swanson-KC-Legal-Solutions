@@ -7,11 +7,12 @@ import type { SiteConfig } from "@/types";
 // Before going live, update:
 // - siteUrl: Your actual production domain
 // - contact.phone: The firm's real phone number
-// - contact.email: The firm's real email address
-// - contact.address: The firm's real street address
-// - contact.city: The firm's real city
-// - contact.province: The firm's real province
-// - contact.country: Update if not Canada
+// - contact.email: The firm's real email address (now real)
+// - contact.address: The firm's real street address (now real)
+// - contact.city: The firm's real city (now real)
+// - contact.province: The firm's real province (now real)
+// - contact.postalCode: The firm's real postal code (now real)
+// - contact.country: The firm's real country (now real)
 // - contact.hours: The firm's real business hours
 // - social.linkedin: The firm's LinkedIn URL (or remove if not used)
 // - social.facebook: The firm's Facebook URL (or remove if not used)
@@ -30,10 +31,11 @@ export const siteConfig: SiteConfig = {
   // Contact information - update all fields below with real details
   contact: {
     phone: "(000) 000-0000",
-    email: "info@swansonkclegal.ca",
-    address: "123 Placeholder Street",
-    city: "Toronto",
-    province: "Ontario",
+    email: "Admin@swansonkclegalsolutions.com",
+    address: "#304 3016 - 5th Ave NE",
+    city: "Calgary",
+    province: "Alberta",
+    postalCode: "T2A 6K4",
     country: "Canada",
     hours: "Monday to Friday, 9:00 AM - 5:00 PM",
   },
@@ -130,11 +132,24 @@ export function getPhoneHref(phone: string): string {
   return `tel:+1${cleaned}`;
 }
 
-// Helper to get Google Maps URL from contact address
+export function getContactAddressLines(): string[] {
+  const { address, city, province, postalCode, country } = siteConfig.contact;
+
+  return [address, `${city}, ${province} ${postalCode}`, country];
+}
+
 export function getGoogleMapsUrl(): string {
-  const { address, city, province, country } = siteConfig.contact;
+  const { address, city, province, postalCode, country } = siteConfig.contact;
   const query = encodeURIComponent(
-    `${address}, ${city}, ${province}, ${country}`,
+    `${address}, ${city}, ${province} ${postalCode}, ${country}`,
   );
   return `https://www.google.com/maps/search/?api=1&query=${query}`;
+}
+
+export function getGoogleMapsEmbedUrl(): string {
+  const { address, city, province, postalCode, country } = siteConfig.contact;
+  const query = encodeURIComponent(
+    `${address}, ${city}, ${province} ${postalCode}, ${country}`,
+  );
+  return `https://www.google.com/maps?q=${query}&output=embed`;
 }

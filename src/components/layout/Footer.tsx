@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/lib/site-config";
+import { getContactAddressLines, siteConfig } from "@/lib/site-config";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -79,11 +79,9 @@ export function Footer() {
                 </a>
               </li>
               <li className="text-navy-200 text-sm">
-                <div>{siteConfig.contact.address}</div>
-                <div>
-                  {siteConfig.contact.city}, {siteConfig.contact.province}
-                </div>
-                <div>{siteConfig.contact.country}</div>
+                {getContactAddressLines().map((line) => (
+                  <div key={line}>{line}</div>
+                ))}
               </li>
             </ul>
             <Button href="/contact-us" variant="primary" size="sm">
