@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us | A Canadian Law Firm | Swanson KC Legal Solutions",
+  title: "About Us | A Canadian Law Firm",
   description:
     "Learn about Swanson KC Legal Solutions, a Canadian law firm providing practical legal services in corporate, civil, property, and immigration law for clients across Canada.",
   keywords: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "Toronto lawyers",
   ],
   openGraph: {
-    title: "About Us | A Canadian Law Firm | Swanson KC Legal Solutions",
+    title: "About Us | A Canadian Law Firm",
     description:
       "Learn about Swanson KC Legal Solutions, a Canadian law firm providing practical legal services in corporate, civil, property, and immigration law for clients across Canada.",
     type: "website",

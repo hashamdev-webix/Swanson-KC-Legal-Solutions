@@ -29,7 +29,7 @@ import {
 import { featuredArticle, articles } from "@/lib/insights-data";
 
 export const metadata: Metadata = {
-  title: "Legal Insights & Updates | Swanson KC Legal Solutions",
+  title: "Legal Insights & Updates",
   description:
     "Practical legal articles, guides, and updates on corporate, civil, property, and immigration law in Canada from Swanson KC Legal Solutions.",
   keywords: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "legal resources Canada",
   ],
   openGraph: {
-    title: "Legal Insights & Updates | Swanson KC Legal Solutions",
+    title: "Legal Insights & Updates",
     description:
       "Practical legal articles, guides, and updates on corporate, civil, property, and immigration law in Canada from Swanson KC Legal Solutions.",
     type: "website",

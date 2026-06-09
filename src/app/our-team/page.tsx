@@ -25,7 +25,7 @@ import {
 import { teamMembers } from "@/lib/team-data";
 
 export const metadata: Metadata = {
-  title: "Our Team | Meet Our Legal Professionals | Swanson KC Legal Solutions",
+  title: "Our Team | Meet Our Legal Professionals",
   description:
     "Meet the legal team at Swanson KC Legal Solutions — experienced professionals serving clients across corporate, civil, property, and immigration law in Canada.",
   keywords: [
@@ -39,8 +39,7 @@ export const metadata: Metadata = {
     "Swanson KC",
   ],
   openGraph: {
-    title:
-      "Our Team | Meet Our Legal Professionals | Swanson KC Legal Solutions",
+    title: "Our Team | Meet Our Legal Professionals",
     description:
       "Meet the legal team at Swanson KC Legal Solutions — experienced professionals serving clients across corporate, civil, property, and immigration law in Canada.",
     type: "website",

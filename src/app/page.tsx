@@ -29,7 +29,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title:
-    "Trusted Canadian Legal Services for Individuals, Families & Businesses | Swanson KC Legal Solutions",
+    "Trusted Canadian Legal Services for Individuals, Families & Businesses",
   description:
     "Swanson KC Legal Solutions is a Canadian law firm providing legal services in corporate law, civil law, property law, and immigration law. We assist individuals, families, businesses, property owners, and newcomers.",
   keywords: [
@@ -43,13 +43,6 @@ export const metadata: Metadata = {
     "real estate lawyer",
     "immigration lawyer",
   ],
-  openGraph: {
-    title:
-      "Trusted Canadian Legal Services for Individuals, Families & Businesses | Swanson KC Legal Solutions",
-    description:
-      "Swanson KC Legal Solutions is a Canadian law firm providing legal services in corporate law, civil law, property law, and immigration law. We assist individuals, families, businesses, property owners, and newcomers.",
-    type: "website",
-  },
 };
 
 export default function HomePage() {

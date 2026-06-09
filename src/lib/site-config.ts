@@ -1,10 +1,33 @@
 import type { SiteConfig } from "@/types";
 
+// ============================================================================
+// UPDATE THESE WHEN REAL DETAILS ARE AVAILABLE
+// ============================================================================
+// This is the single source of truth for all contact information across the site.
+// Before going live, update:
+// - siteUrl: Your actual production domain
+// - contact.phone: The firm's real phone number
+// - contact.email: The firm's real email address
+// - contact.address: The firm's real street address
+// - contact.city: The firm's real city
+// - contact.province: The firm's real province
+// - contact.country: Update if not Canada
+// - contact.hours: The firm's real business hours
+// - social.linkedin: The firm's LinkedIn URL (or remove if not used)
+// - social.facebook: The firm's Facebook URL (or remove if not used)
+// - social.twitter: The firm's Twitter/X URL (or remove if not used)
+// ============================================================================
+
 export const siteConfig: SiteConfig = {
   name: "Swanson KC Legal Solutions",
   shortName: "Swanson KC",
   description:
     "Swanson KC Legal Solutions is a Canadian law firm providing legal services in corporate law, civil law, property law, and immigration law. We assist individuals, families, businesses, property owners, and newcomers with practical legal guidance and professional representation.",
+
+  // Production site URL - update before deployment
+  siteUrl: "https://www.swansonkclegal.ca",
+
+  // Contact information - update all fields below with real details
   contact: {
     phone: "(000) 000-0000",
     email: "info@swansonkclegal.ca",
@@ -13,6 +36,13 @@ export const siteConfig: SiteConfig = {
     province: "Ontario",
     country: "Canada",
     hours: "Monday to Friday, 9:00 AM - 5:00 PM",
+  },
+
+  // Social media links - update with real URLs or remove unused platforms
+  social: {
+    linkedin: "#", // Update with: https://www.linkedin.com/company/your-firm
+    facebook: "#", // Update with: https://www.facebook.com/your-firm
+    twitter: "#", // Update with: https://twitter.com/your-firm
   },
   nav: [
     { label: "Home", href: "/" },
@@ -93,3 +123,18 @@ export const siteConfig: SiteConfig = {
     },
   ],
 };
+
+// Helper to format phone number for tel: links (strips non-digits and adds +1 for Canada/US)
+export function getPhoneHref(phone: string): string {
+  const cleaned = phone.replace(/\D/g, "");
+  return `tel:+1${cleaned}`;
+}
+
+// Helper to get Google Maps URL from contact address
+export function getGoogleMapsUrl(): string {
+  const { address, city, province, country } = siteConfig.contact;
+  const query = encodeURIComponent(
+    `${address}, ${city}, ${province}, ${country}`,
+  );
+  return `https://www.google.com/maps/search/?api=1&query=${query}`;
+}

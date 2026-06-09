@@ -28,8 +28,7 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title:
-    "Areas of Practice | Corporate, Civil, Property & Immigration Law | Swanson KC Legal Solutions",
+  title: "Areas of Practice | Corporate, Civil, Property & Immigration Law",
   description:
     "Explore the legal services offered by Swanson KC Legal Solutions across corporate law, civil law, property law, and immigration law for clients across Canada.",
   keywords: [
@@ -43,8 +42,7 @@ export const metadata: Metadata = {
     "real estate legal services",
   ],
   openGraph: {
-    title:
-      "Areas of Practice | Corporate, Civil, Property & Immigration Law | Swanson KC Legal Solutions",
+    title: "Areas of Practice | Corporate, Civil, Property & Immigration Law",
     description:
       "Explore the legal services offered by Swanson KC Legal Solutions across corporate law, civil law, property law, and immigration law for clients across Canada.",
     type: "website",
