@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
-import { getContactAddressLines, siteConfig } from "@/lib/site-config";
+import {
+  getContactAddressLines,
+  getPhoneHref,
+  siteConfig,
+} from "@/lib/site-config";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -64,8 +68,8 @@ export function Footer() {
             <ul className="space-y-3 mb-4">
               <li>
                 <a
-                  href={`tel:${siteConfig.contact.phone.replace(/\D/g, "")}`}
-                  className="text-navy-200 hover:text-gold-500 transition-colors text-sm"
+                  href={getPhoneHref(siteConfig.contact.phone)}
+                  className="text-navy-200 hover:text-gold-500 transition-colors text-sm break-words"
                 >
                   {siteConfig.contact.phone}
                 </a>
@@ -73,9 +77,17 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="text-navy-200 hover:text-gold-500 transition-colors text-sm"
+                  className="block text-navy-200 hover:text-gold-500 transition-colors text-sm break-words"
                 >
                   {siteConfig.contact.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${siteConfig.contact.emailSecondary}`}
+                  className="block text-navy-200 hover:text-gold-500 transition-colors text-sm break-words"
+                >
+                  {siteConfig.contact.emailSecondary}
                 </a>
               </li>
               <li className="text-navy-200 text-sm">

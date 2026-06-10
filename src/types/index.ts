@@ -15,6 +15,7 @@ export interface PracticeArea {
 export interface ContactInfo {
   phone: string;
   email: string;
+  emailSecondary: string;
   address: string;
   city: string;
   province: string;

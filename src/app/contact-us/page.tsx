@@ -26,6 +26,7 @@ import {
   getContactAddressLines,
   getGoogleMapsEmbedUrl,
   getGoogleMapsUrl,
+  getPhoneHref,
   siteConfig,
 } from "@/lib/site-config";
 
@@ -88,7 +89,7 @@ export default function ContactUsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
-                href={`tel:${siteConfig.contact.phone}`}
+                href={getPhoneHref(siteConfig.contact.phone)}
                 variant="primary"
                 size="lg"
               >
@@ -122,7 +123,7 @@ export default function ContactUsPage() {
                 Call Us
               </h3>
               <a
-                href={`tel:${siteConfig.contact.phone}`}
+                href={getPhoneHref(siteConfig.contact.phone)}
                 className="block text-lg font-medium text-gold-600 hover:text-gold-700 transition-colors"
               >
                 {siteConfig.contact.phone}
@@ -142,9 +143,15 @@ export default function ContactUsPage() {
               </h3>
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="block text-lg font-medium text-gold-600 hover:text-gold-700 transition-colors break-all"
+                className="block text-lg font-medium text-gold-600 hover:text-gold-700 transition-colors break-words"
               >
                 {siteConfig.contact.email}
+              </a>
+              <a
+                href={`mailto:${siteConfig.contact.emailSecondary}`}
+                className="block text-lg font-medium text-gold-600 hover:text-gold-700 transition-colors break-words"
+              >
+                {siteConfig.contact.emailSecondary}
               </a>
               <p className="text-sm text-navy-600">
                 Send us details about your matter.
@@ -216,7 +223,7 @@ export default function ContactUsPage() {
               {/* Contact Details */}
               <div className="space-y-4">
                 <a
-                  href={`tel:${siteConfig.contact.phone}`}
+                  href={getPhoneHref(siteConfig.contact.phone)}
                   className="flex items-start gap-3 text-navy-700 hover:text-gold-600 transition-colors group"
                 >
                   <Phone className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
@@ -235,8 +242,21 @@ export default function ContactUsPage() {
                   <Mail className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
                   <div>
                     <div className="font-semibold">Email</div>
-                    <div className="text-navy-600 group-hover:text-gold-600 break-all">
+                    <div className="text-navy-600 group-hover:text-gold-600 break-words">
                       {siteConfig.contact.email}
+                    </div>
+                  </div>
+                </a>
+
+                <a
+                  href={`mailto:${siteConfig.contact.emailSecondary}`}
+                  className="flex items-start gap-3 text-navy-700 hover:text-gold-600 transition-colors group"
+                >
+                  <Mail className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
+                  <div>
+                    <div className="font-semibold">Email</div>
+                    <div className="text-navy-600 group-hover:text-gold-600 break-words">
+                      {siteConfig.contact.emailSecondary}
                     </div>
                   </div>
                 </a>
@@ -302,7 +322,7 @@ export default function ContactUsPage() {
               {/* Action Buttons */}
               <div className="flex flex-col gap-3 pt-4">
                 <Button
-                  href={`tel:${siteConfig.contact.phone}`}
+                  href={getPhoneHref(siteConfig.contact.phone)}
                   variant="primary"
                   size="lg"
                   className="w-full"
@@ -373,7 +393,7 @@ export default function ContactUsPage() {
                     <div>
                       <p className="font-medium text-navy-700">Phone</p>
                       <a
-                        href={`tel:${siteConfig.contact.phone}`}
+                        href={getPhoneHref(siteConfig.contact.phone)}
                         className="text-gold-600 hover:text-gold-700 transition-colors"
                       >
                         {siteConfig.contact.phone}
@@ -385,12 +405,20 @@ export default function ContactUsPage() {
                     <Mail className="w-5 h-5 text-gold-600 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-medium text-navy-700">Email</p>
-                      <a
-                        href={`mailto:${siteConfig.contact.email}`}
-                        className="text-gold-600 hover:text-gold-700 transition-colors break-all"
-                      >
-                        {siteConfig.contact.email}
-                      </a>
+                      <div className="space-y-1">
+                        <a
+                          href={`mailto:${siteConfig.contact.email}`}
+                          className="block text-gold-600 hover:text-gold-700 transition-colors break-words"
+                        >
+                          {siteConfig.contact.email}
+                        </a>
+                        <a
+                          href={`mailto:${siteConfig.contact.emailSecondary}`}
+                          className="block text-gold-600 hover:text-gold-700 transition-colors break-words"
+                        >
+                          {siteConfig.contact.emailSecondary}
+                        </a>
+                      </div>
                     </div>
                   </div>
 
@@ -515,7 +543,7 @@ export default function ContactUsPage() {
         description="Reach out to Swanson KC Legal Solutions today. Our team can help you understand your options and determine the right next step."
         primaryCta={{
           label: "Call Now",
-          href: `tel:${siteConfig.contact.phone}`,
+          href: getPhoneHref(siteConfig.contact.phone),
         }}
         secondaryCta={{
           label: "Send a Message",

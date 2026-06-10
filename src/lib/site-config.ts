@@ -6,8 +6,9 @@ import type { SiteConfig } from "@/types";
 // This is the single source of truth for all contact information across the site.
 // Before going live, update:
 // - siteUrl: Your actual production domain
-// - contact.phone: The firm's real phone number
-// - contact.email: The firm's real email address (now real)
+// - contact.phone: The firm's real phone number (now real: +1 825-804-5254)
+// - contact.email: The firm's real primary email address (now real: Admin@swansonkclegalsolutions.com)
+// - contact.emailSecondary: The firm's real secondary email address (now real: Michael@swansonkclegalsolutions.com)
 // - contact.address: The firm's real street address (now real)
 // - contact.city: The firm's real city (now real)
 // - contact.province: The firm's real province (now real)
@@ -30,8 +31,9 @@ export const siteConfig: SiteConfig = {
 
   // Contact information - update all fields below with real details
   contact: {
-    phone: "(000) 000-0000",
+    phone: "+1 825-804-5254",
     email: "Admin@swansonkclegalsolutions.com",
+    emailSecondary: "Michael@swansonkclegalsolutions.com",
     address: "#304 3016 - 5th Ave NE",
     city: "Calgary",
     province: "Alberta",
@@ -126,10 +128,11 @@ export const siteConfig: SiteConfig = {
   ],
 };
 
-// Helper to format phone number for tel: links (strips non-digits and adds +1 for Canada/US)
+// Helper to format phone number for tel: links (keeps + prefix for international format)
 export function getPhoneHref(phone: string): string {
-  const cleaned = phone.replace(/\D/g, "");
-  return `tel:+1${cleaned}`;
+  const digitsOnly = phone.replace(/\D/g, "");
+  const prefix = phone.trim().startsWith("+") ? "+" : "";
+  return `tel:${prefix}${digitsOnly}`;
 }
 
 export function getContactAddressLines(): string[] {
